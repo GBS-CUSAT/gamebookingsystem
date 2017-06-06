@@ -1,0 +1,19 @@
+.container{
+background-color: #333;
+list-style-type: none;
+margin:0;	
+}
+
+h1{
+    color : #fff;
+	font-family : 'Raleway', sans-serif;
+	font-weight; 600;
+	font-size : 18px;
+	margin-right: 25px;
+}
+
+body{
+	background:url(https://s-media-cache-ak0.pinimg.com/originals/58/54/23/58542340effa27e4941369bd76c70e15.jpg) no-repeat center center;
+	background-size : 1920px 1080px;
+	
+}

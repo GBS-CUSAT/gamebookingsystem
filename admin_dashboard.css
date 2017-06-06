@@ -1,0 +1,66 @@
+
+.tabs{
+background-color: #333;
+list-style-type: none;
+margin:0;
+padding: 20px 0;	
+}
+
+.tabs a{
+	color : #fff;
+	font-family : 'Raleway', sans-serif;
+	font-weight; 600;
+	font-size : 18px;
+	margin-right: 25px;
+}
+
+body{
+	background:url(https://s-media-cache-ak0.pinimg.com/originals/58/54/23/58542340effa27e4941369bd76c70e15.jpg) no-repeat center center;
+	background-size : cover;
+	
+}
+.main h1{
+	color: #333;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+	font-size: 70px;
+	margin-top:0;
+	margin-bottom : 80px;
+}
+
+.dropbtn{color : #333;
+	font-family : 'Raleway', sans-serif;
+	font-weight; 600;
+	font-size : 16px;
+	margin-right: 25px;
+	cursor: pointer;
+}
+	
+.dropdown{
+	position: relative;
+	display: inline-bock;
+}
+
+.dropdown-content{
+	display: none;
+	position:absolute;
+	background-color: #333;
+	width : 100%;
+	overflow:auto;
+	box-shadow: 0p 8px 16p 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-content a{
+	padding: 12 px 16px;
+	text-direction: none;
+	display: block;
+}
+
+.dropdown-content a:hover {background-color: #333;}
+
+.dropdown:hover .dropdown-content{display: block;}
+
+.dropdown:hover .dropbtn{
+	background-color: #3e8e41;
+}
