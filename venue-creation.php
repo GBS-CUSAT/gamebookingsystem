@@ -1,18 +1,32 @@
 <?php
 $newrecord="";
 if(isset($_POST['submitted'])) {
+
+
 	include('connect-mysql.php');
 	$venue = $_POST['venue'];
 	$duration = $_POST['duration'];
 	$strength = $_POST['strength'];
 	$description = $_POST['description'];
+
+	if($venue != 'venue' && $duration != 0 && $strength != 0 && $description != null  ){
 	$sqlinsert = "INSERT INTO venues (venue_name,duration,strength,description) VALUES ('$venue','$duration','$strength','$description')";
 	if (!mysqli_query($dbcon, $sqlinsert)){
-		die('error inserting new record');
-	} // end of nested if statement
-	$newrecord = "record inserted";
+    die('error inserting new record');
+    } // end of nested if statement
+    echo "record inserted";
+    header("location:venue-creation.php");
+    exit;
+}
+	else {
+		echo "all fields required";
+}
 
-} // end of the main if statement
+
+
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,9 +63,6 @@ Venue Creation
 	<button class="button" type="submit" value="add new venue">ADD</button>
 </fieldset>
 </form>
-<?php
-echo $newrecord;
-?>	
 </div>
 </div>
 <div class="footer"></div>
