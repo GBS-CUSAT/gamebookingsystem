@@ -1,6 +1,6 @@
 <?php
 $newrec='';
-if (isset($_POST['submitted'])){
+if (isset($_POST['submitted']) && isset($_POST['terms'])) {
     include('connect-mysql.php');
     $fname=$_POST['fname'];
     $lname=$_POST['lname'];
@@ -9,15 +9,20 @@ if (isset($_POST['submitted'])){
     $phone=$_POST['phone'];
     $dob=$_POST['dob'];
     $password=md5($_POST['password']);
-    $isadmin=isset($_POST['isadmin']);
-    $sqlinsert="INSERT INTO users (fname,lname,emp_id,dob,phone,email_id,password,is_admin) VALUES ('$fname','$lname','$empid','$dob','$phone','$emailid','$password','$isadmin')";
+    if($_POST['isadmin']=='on')
+        {$isadmin=1;
+        }
+    else {
+        $isadmin=0;
+    }
+    $sqlinsert="INSERT INTO employees (fname,lname,emp_id,dob,phone,email_id,password,is_admin) VALUES ('$fname','$lname','$empid','$dob','$phone','$emailid','$password','$isadmin')";
 
 if(!mysqli_query($dbcon, $sqlinsert)){
     die('error');
 }
 $newrec = "request sumbitted";
 
-}//end of main if loop
+}
 ?>
 <DOCTYPE html>
 <html>
