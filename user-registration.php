@@ -9,7 +9,7 @@ if (isset($_POST['submitted']) && isset($_POST['terms'])) {
     $phone=$_POST['phone'];
     $dob=$_POST['dob'];
     $password=md5($_POST['password']);
-    if($_POST['isadmin']=='on')
+    if(isset($_POST['isadmin']))
         {$isadmin=1;
         }
     else {
@@ -21,8 +21,8 @@ if(!mysqli_query($dbcon, $sqlinsert)){
     die('error');
 }
 $newrec = "request sumbitted";
-
 }
+
 ?>
 <DOCTYPE html>
 <html>
@@ -76,9 +76,9 @@ Password<br>
 <input type="password" name="password"><br>
 Retype-Password<br>
 <input type="password" name="password"><br><br>
-<input type="checkbox" name="terms" /><br>
-Admin<br><br>
 <input type="checkbox" name="isadmin" /><br>
+Admin<br><br>
+<input type="checkbox" name="terms" /><br>
 I agree to the <a href="#" ><font color="#000000">terms &amp; conditions</font></a><br><br>                  
 <button type="submit"  value="submit" name="submit">Register</button>
 <?php
