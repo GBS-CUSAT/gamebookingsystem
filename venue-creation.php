@@ -1,18 +1,32 @@
 <?php
 $newrecord="";
 if(isset($_POST['submitted'])) {
-	include('connect-mysql.php');
-	$venue = $_POST['venue'];
-	$duration = $_POST['duration'];
-	$strength = $_POST['strength'];
-	$description = $_POST['description'];
-	$sqlinsert = "INSERT INTO venues (venue_name,duration,strength,description) VALUES ('$venue','$duration','$strength','$description')";
-	if (!mysqli_query($dbcon, $sqlinsert)){
-		die('error inserting new record');
-	} // end of nested if statement
-	$newrecord = "record inserted";
 
-} // end of the main if statement
+
+	include('connect-mysql.php');
+	$venue=$_POST['venue'];
+	$max_duration=$_POST['max_duration'];
+	$strength=$_POST['strength'];
+	$start_time=$_POST['start_time'];
+	$end_time=$_POST['end_time'];
+	$is_active=isset($_POST['is_active']);
+	$image_path=$_POST['image_path'];
+
+	if($venue!='venue' && $max_duration!=0 && $strength!=0 && $image_path!='image_path'){
+	$sqlinsert = "INSERT INTO vanues (venue,max_duration,strength,start_time,end_time,is_active,image_path) VALUES ('$venue','$max_duration','$strength','$start_time','$end_time','$is_active','$image_path')";
+	if (!mysqli_query($dbcon,$sqlinsert)){
+    die('error inserting new record');
+    } // end of nested if statement
+    echo "record inserted";
+    header("location:venue-creation.php");
+    exit;
+}
+	else {
+		echo "all fields required";
+}
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -41,17 +55,21 @@ Venue Creation
 	Venue:<br>
 	<input type="text" name="venue" value="venue" onfocus="if (this.value=='venue') this.value='';"><br><br>
 	Duration:<br>
-	<input type="number" name="duration" value="duration" onfocus="if (this.value=='duration') this.value='';"><br><br>
+	<input type="Time" name="max_duration" value="max_duration" onfocus="if (this.value=='duration') this.value='';"><br><br>
 	No. Of Players:<br>
 	<input type="number" name="strength" value="strength" onfocus="if (this.value=='strength') this.value='';"><br><br>
-	Description:<br>
-    <input type="text" name="description" value="description" onfocus="if (this.value=='description') this.value='';"><br><br>
-	<button class="button" type="submit" value="add new venue">ADD</button>
+	Start Time:<br>
+	<input type="Time" name="start_time" value="start_time" onfocus="if (this.value=='start_time') this.value='';"><br><br>
+	End Time:<br>
+	<input type="Time" name="end_time" value="end_time" onfocus="if (this.value=='end_time') this.value='';"><br><br>
+	Active:<br>
+	<input type="checkbox" name="is_active" value="Is_active" onfocus="if (this.value=='is_active') this.value='';"><br><br>
+	Image Path:<br>
+	<input type="text" name="image_path" value="image_path" onfocus="if (this.value=='image_path') this.value='';"><br><br>
+	
+    <button class="button" type="submit" value="add new venue">ADD</button>
 </fieldset>
 </form>
-<?php
-echo $newrecord;
-?>	
 </div>
 </div>
 <div class="footer"></div>
