@@ -13,7 +13,7 @@ if(isset($_POST['submitted'])) {
 	$image_path=$_POST['image_path'];
 
 	if($venue!='venue' && $max_duration!=0 && $strength!=0 && $image_path!='image_path'){
-	$sqlinsert = "INSERT INTO vanues (venue,max_duration,strength,start_time,end_time,is_active,image_path) VALUES ('$venue','$max_duration','$strength','$start_time','$end_time','$is_active','$image_path')";
+	$sqlinsert = "INSERT INTO venues (venue,max_duration,strength,start_time,end_time,is_active,image_path) VALUES ('$venue','$max_duration','$strength','$start_time','$end_time','$is_active','$image_path')";
 	if (!mysqli_query($dbcon,$sqlinsert)){
     die('error inserting new record');
     } // end of nested if statement
